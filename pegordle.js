@@ -88,7 +88,7 @@ function generateKeyboard() {
         }
         htmlGen+="<div id=\"letter_" + _keys[x] +"\" class=\"" + _keyboardClass + "\" onclick=\"keyPress('"+ _keys[x] +"')\">" + _keys[x] + "</div>";
         if (_keys[x] == "M") {
-            htmlGen+="<div id=\"letter_Erase\" class\"" + _keyboardClass + " iconDelete\" onclick=\"keyPress('ERASE')\">&nbsp</div>";
+            htmlGen+="<div id=\"letter_Erase\" class=\"" + _keyboardClass + " iconDelete\" onclick=\"keyPress('ERASE')\">&nbsp</div>";
         }
     }
     htmlGen+="</div>"
