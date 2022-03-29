@@ -6,6 +6,7 @@
   position:fixed;
   overflow:hidden;
   touch-action: manipulation;
+  background: aliceblue;
 }
 
 #mainTable{
@@ -82,6 +83,18 @@
 .score {
   font-size: 5vw;
   padding: 20px;
+}
+
+.nextPlay {
+  padding: 15px;
+  margin-top: 15px;
+  font-weight: bold;
+  border-top: 1px solid #787C7E;
+}
+
+#nextPegordle {
+  font-size: 4vw;
+  color: #00bcd4;
 }
 
 .shareButton {
@@ -191,6 +204,8 @@
   overflow: hidden;
   text-align: center;
   margin-bottom: 30px;
+  white-space: nowrap;
+  margin: 0 auto;
 }
 
 .keyboardRow {
@@ -213,6 +228,25 @@
   display: inline-block;
   text-align: center;
   margin: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 9vw;
+}
+
+.keyboardElementTiny {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 4vw;
+  height: 9vw;
+  width: auto;
+  border: 1px solid #D3D6DA;
+  border-radius: 5px;
+  background: #D3D6DA;
+  display: inline-block;
+  text-align: center;
+  margin: 1px;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 10px;
