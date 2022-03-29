@@ -60,6 +60,9 @@
             <div class="infoText" style="border-bottom:0px">
                 <b>Same PEGORDLE every single day! ;)</b>
             </div>
+            <div class="finePrint">
+                *** This is just a joke / fun project. Please don't sue me NYTimes :) ***
+            </div>
         </div>
         <div id="popUpStats" class="popUpInfo">
             <div class="closePopUpInfoButton" onclick="closeInfo(true)">&#10060;</div>
@@ -108,7 +111,7 @@
     let _cWN = "CWN"; // wins
     let _cST = "CST"; // win streak
     let _cMS = "CMS"; // max streak
-    let INCEPTION = new Date("03/23/2022"); //DATE OF CREATION! PRAISE BE!
+    let INCEPTION = new Date("03/27/2022"); //DATE OF CREATION! PRAISE BE!
     var _row = 0;
     var _col = 0;
     var _success = false;
@@ -243,6 +246,7 @@
                 checkLetters(y, false);
             }
             _guess = [];
+            _checked = [];
             _row += 1;
             _col = 0;
         }
@@ -251,6 +255,9 @@
         if (_success == "true") {
             _success = true;
             displaySuccess(true);
+        } else if (_row == 6) {
+            _success = false;
+            displayFailure();
         } else {
             _success = false;
         }
@@ -337,11 +344,13 @@
             if (_success && doAnimation) {
                 _row++;
                 displaySuccess(false);
-            } else if (_row!=7 && doAnimation) {
+            } else if (_row!=5 && doAnimation) {
                 _row++;
                 _col=0;
                 _guess = [];
                 _checked = [];
+            } else if (_row == 5) {
+                displayFailure();
             }
         }
     }
@@ -423,6 +432,8 @@
     function displayFailure() {
         setCookie(_cST, 0, false);
         showMessage("Damn, you're bad.")
+
+        setTimeout(function(){displayStats(true);},500);
     }
 
     // cookie functions from w3 :)
