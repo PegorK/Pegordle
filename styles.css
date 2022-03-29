@@ -220,7 +220,7 @@
   font-family: monospace;
   font-weight: bold;
   font-size: 4vw;
-  height: 9vw;
+  height: fit-content;
   width: auto;
   border: 1px solid #D3D6DA;
   border-radius: 5px;
@@ -228,18 +228,17 @@
   display: inline-block;
   text-align: center;
   margin: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 9vw;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .keyboardElementTiny {
   font-family: monospace;
   font-weight: bold;
   font-size: 4vw;
-  height: 9vw;
+  height: fit-content;
   width: auto;
   border: 1px solid #D3D6DA;
   border-radius: 5px;
@@ -247,11 +246,10 @@
   display: inline-block;
   text-align: center;
   margin: 1px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 9vw;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .iconDelete {

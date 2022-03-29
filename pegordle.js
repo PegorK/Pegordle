@@ -20,7 +20,7 @@ var _keyboardClass = "keyboardElement"
 initPage();
 
 function initPage() {
-    if (window.outerWidth<375) {
+    if (window.outerWidth<500) {
         _keyboardClass = "keyboardElementTiny";
     }
 
