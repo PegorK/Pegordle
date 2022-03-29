@@ -162,7 +162,7 @@
   font-size: 3vw;
   color: white;
   border: 1px solid white;
-  font-family: fantasy;
+  font-family: Georgia, serif;
   left: 0;
   right: 0;
   top: 8vh;
@@ -174,7 +174,7 @@
 }
 
 .headerItem {
-  font-family: fantasy, san-serif;
+  font-family: Georgia, sans-serif;
   font-weight: 700;
   font-size: 40px;
   text-align: center;
