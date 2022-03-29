@@ -485,7 +485,7 @@
     // thanks stackoverflow! https://stackoverflow.com/questions/46041831/copy-to-clipboard-with-break-line
     function copyToClipboard(stringWithNewLines){
         if (navigator.canShare) {
-            navigator.share(stringWithNewLines);
+            navigator.share({text:stringWithNewLines});
         } else {
             const mySmartTextarea = document.createElement('textarea');
             mySmartTextarea.innerHTML = stringWithNewLines;
