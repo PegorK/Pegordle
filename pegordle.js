@@ -1,5 +1,9 @@
 let _answer = "PEGOR";
 let _keys = "QWERTYUIOPASDFGHJKLZXCVBNM";
+let _firstTry = "OH BABY! 1st Try!";
+let _secondTry = "Damn! Nicely Done!";
+let _thirdAndOn = "Good Job!"
+let _
 let _cTG = "CTG"; // todays guesses
 let _cSC = "CSC"; // success
 let _cLP = "CLP"; // last played
@@ -16,6 +20,7 @@ var _checked = [];
 var _todaysGuesses = [];
 var _daysSince = 0;
 var _keyboardClass = "keyboardElement"
+var _lock = false;
 
 initPage();
 
@@ -138,7 +143,7 @@ function checkCookies() {
 
     var winPercent = 0;
     if (wins != 0) {
-        winPercent = (parseInt(playCount)/parseInt(wins))*100;
+        winPercent = Math.floor((parseInt(wins)/parseInt(playCount))*100);
     } 
 
     // update stats
@@ -184,9 +189,11 @@ function keyPress(letter) {
     if ($("#popUpInfo").is(":visible") || $("#popUpStats").is(":visible")){
         return;
     }
-    if (_success) {
+
+    if (_success || _lock) {
         return;
     }
+
     if (letter == 'ENTER') {
         if (_col==5 && _row!=7){
             checkAnswer();
@@ -209,6 +216,8 @@ function keyPress(letter) {
 }
 
 function checkAnswer() {
+    _lock = true;
+
     if (_guess.join("") == _answer) {
         _success = true;
     }
@@ -216,6 +225,9 @@ function checkAnswer() {
         $("#row_"+_row).addClass("badWord");
         showMessage("Not in word list!")
         setTimeout(clearBadWord, 200);
+
+        _lock = false;
+
         return;
     }
 
@@ -269,6 +281,8 @@ function checkLetters(count, doAnimation) {
         } else if (_row == 5) {
             displayFailure();
         }
+        
+        _lock = false;
     }
 }
 
@@ -297,7 +311,13 @@ function closeInfo(stats) {
 }
 
 function displaySuccess(fromCookie) {
-    showMessage("SUCCESS!!!")
+    if(_row <= 1) {
+        showMessage(_firstTry);
+    } else if (_row <= 2) {
+        showMessage(_secondTry);
+    } else {
+        showMessage(_thirdAndOn);
+    }
 
     if (fromCookie == false) {
         var wins = getCookie(_cWN);
@@ -332,7 +352,7 @@ function displaySuccess(fromCookie) {
 
         var winPercent = 0;
         if (wins != 0) {
-            winPercent = (parseInt(playCount)/parseInt(wins))*100;
+            winPercent = Math.floor((parseInt(wins)/parseInt(playCount))*100);
         } 
 
         $("#playedCount").html(playCount);
@@ -348,9 +368,8 @@ function displaySuccess(fromCookie) {
 
 function displayFailure() {
     setCookie(_cST, 0, false);
-    showMessage("Damn, you're bad.")
-
-    setTimeout(function(){displayStats(true);},500);
+    showMessage(":| IT'S SPELLED P-E-G-O-R", 2000);
+    setTimeout(function(){displayStats(true);}, 3000);
 }
 
 // cookie functions from w3 :)
@@ -384,10 +403,10 @@ function getCookie(cname) {
     return "";
 }
 
-function showMessage(msg) {
+function showMessage(msg, timeout=500) {
     $("#popUpMsg").html(msg);
     $("#popUpMsg").show();
-    setTimeout(function(){$("#popUpMsg").fadeOut(400);},500);
+    setTimeout(function(){$("#popUpMsg").fadeOut(400);}, timeout);
 }
 
 
@@ -405,7 +424,7 @@ function generateClipboard() {
         }
         shareText +="\r\n"
     }
-    shareText += "http://Pegordle.com";
+    shareText += "https://Pegordle.com";
     copyToClipboard(shareText);
 }
 
