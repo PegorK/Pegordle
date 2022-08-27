@@ -42,6 +42,10 @@ function initPage() {
     generateKeyboard();
     checkCookies();
     updateTimer();
+
+    if ($("#keyboardArea").width() > 500) {
+        $("#keyboardArea").css("transform","scale(0.5)")
+    }
 }
 
 // sanity check
